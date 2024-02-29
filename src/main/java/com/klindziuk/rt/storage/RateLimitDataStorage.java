@@ -7,11 +7,11 @@ package com.klindziuk.rt.storage;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public final class RateLimitStorage {
+public final class RateLimitDataStorage {
 
   private static final Map<String, RateLimitData> STORAGE = new ConcurrentHashMap<>();
 
-  private RateLimitStorage() {
+  private RateLimitDataStorage() {
     throw new RuntimeException();
   }
 
@@ -19,11 +19,11 @@ public final class RateLimitStorage {
     return STORAGE.putIfAbsent(apiKey, rateLimitData);
   }
 
-  public static RateLimitData getRateLimitData(String username) {
-    return STORAGE.get(username);
+  public static RateLimitData getRateLimitData(String apiKey) {
+    return STORAGE.get(apiKey);
   }
 
-  public static RateLimitData removeRateLimitData(String username) {
-    return STORAGE.remove(username);
+  public static RateLimitData removeRateLimitData(String apiKey) {
+    return STORAGE.remove(apiKey);
   }
 }

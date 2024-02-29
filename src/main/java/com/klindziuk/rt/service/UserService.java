@@ -9,8 +9,6 @@ import com.klindziuk.rt.model.reposiotory.RtUser;
 public interface UserService {
 
   RtUser getById(String id);
-
   RtUser getByApiKey(String apikey);
-
   RtUser getByUsername(String username);
 }

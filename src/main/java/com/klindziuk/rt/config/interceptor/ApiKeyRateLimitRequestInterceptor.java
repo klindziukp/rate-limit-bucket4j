@@ -10,7 +10,7 @@ import com.klindziuk.rt.model.reposiotory.RtUser;
 import com.klindziuk.rt.service.PricingPlanService;
 import com.klindziuk.rt.service.UserService;
 import com.klindziuk.rt.storage.RateLimitData;
-import com.klindziuk.rt.storage.RateLimitStorage;
+import com.klindziuk.rt.storage.RateLimitDataStorage;
 import io.github.bucket4j.Bucket;
 import io.github.bucket4j.ConsumptionProbe;
 import jakarta.servlet.http.HttpServletRequest;
@@ -60,7 +60,7 @@ public class ApiKeyRateLimitRequestInterceptor implements HandlerInterceptor {
   }
 
   private RateLimitData getRateLimitData(String apiKey) {
-    RateLimitData rateLimitData = RateLimitStorage.getRateLimitData(apiKey);
+    RateLimitData rateLimitData = RateLimitDataStorage.getRateLimitData(apiKey);
     if (Objects.isNull(rateLimitData)) {
       final RtUser userByApiKey = userService.getByApiKey(apiKey);
       if (Objects.isNull(userByApiKey)) {
@@ -68,7 +68,7 @@ public class ApiKeyRateLimitRequestInterceptor implements HandlerInterceptor {
       }
       final Bucket bucket = pricingPlanService.resolveBucketByUserPlan(userByApiKey.getUserPlan());
       rateLimitData = new RateLimitData().setUser(userByApiKey).setBucket(bucket);
-      RateLimitStorage.addRateLimitData(apiKey, rateLimitData);
+      RateLimitDataStorage.addRateLimitData(apiKey, rateLimitData);
     }
     return rateLimitData;
   }

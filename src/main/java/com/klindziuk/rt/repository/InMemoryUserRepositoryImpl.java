@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserRepositoryImpl implements UserRepository {
+public class InMemoryUserRepositoryImpl implements UserRepository {
 
   private static final Map<String, RtUser> STORAGE = new ConcurrentHashMap<>();
 
