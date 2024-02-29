@@ -20,19 +20,19 @@ public class InMemoryUserRepositoryImpl implements UserRepository {
         "00001",
         new RtUser()
             .setUsername("FreeUser")
-            .setApiKey("d0476978-66cd-4ad5-94e8-38ebb575f5c4")
+            .setApiKey("d0476978-free-4ad5-94e8-38ebb575f5c4")
             .setUserPlan(UserPlan.FREE));
     STORAGE.put(
         "00002",
         new RtUser()
             .setUsername("BasicUser")
-            .setApiKey("d0476978-66cd-4ad5-94e8-38ebb575f5c5")
+            .setApiKey("d0476978-base-4ad5-94e8-38ebb575f5c5")
             .setUserPlan(UserPlan.BASIC));
     STORAGE.put(
         "00003",
         new RtUser()
             .setUsername("ProUser")
-            .setApiKey("d0476978-66cd-4ad5-94e8-38ebb575f5c6")
+            .setApiKey("d0476978-prof-4ad5-94e8-38ebb575f5c6")
             .setUserPlan(UserPlan.PRO));
   }
 
